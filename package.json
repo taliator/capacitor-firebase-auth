@@ -14,6 +14,7 @@
   "license": "MIT",
   "dependencies": {
     "@capacitor/core": "latest",
+    "firebase": "^7.14.1",
     "rxjs": "^6.5.3"
   },
   "devDependencies": {
@@ -46,10 +47,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/baumblatt/capacitor-firebase-auth.git"
+    "url": "https://github.com/taliator/capacitor-firebase-auth.git"
   },
   "bugs": {
-    "url": "https://github.com/baumblatt/capacitor-firebase-auth.git/issues"
-  },
-  "_where": "/Users/baumblatt/wks/cap-fire-playground"
+    "url": "https://github.com/taliator/capacitor-firebase-auth.git/issues"
+  }
 }

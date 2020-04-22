@@ -36,12 +36,6 @@ public class CapacitorFirebaseAuth: CAPPlugin {
             if ("google.com" == provider) {
                 self.providers["google.com"] = GoogleProviderHandler()
                 self.providers["google.com"]?.initialize(plugin: self)
-            } else if ("twitter.com" == provider) {
-                self.providers["twitter.com"] = TwitterProviderHandler()
-                self.providers["twitter.com"]?.initialize(plugin: self)
-            } else if ("facebook.com" == provider) {
-                self.providers["facebook.com"] = FacebookProviderHandler()
-                self.providers["facebook.com"]?.initialize(plugin: self)
             } else if ("phone" == provider) {
                 self.providers["phone"] = PhoneNumberProviderHandler()
                 self.providers["phone"]?.initialize(plugin: self)
@@ -175,7 +169,7 @@ public class CapacitorFirebaseAuth: CAPPlugin {
             call.success()
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
-            call.reject("Error signing out: %@", signOutError)
+            call.reject("Error signing out: %@", signOutError as? String)
         }
     }
 }
