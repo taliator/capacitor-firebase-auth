@@ -1,6 +1,6 @@
 {
   "name": "capacitor-firebase-auth",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Capacitor plugin for Firebase Authentication",
   "main": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
@@ -13,8 +13,7 @@
   "author": "Bernardo Baumblatt",
   "license": "MIT",
   "dependencies": {
-    "@capacitor/core": "latest",
-    "rxjs": "^6.5.3"
+    "@capacitor/core": "latest"
   },
   "devDependencies": {
     "rimraf": "^2.6.3",
