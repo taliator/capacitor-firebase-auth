@@ -21,7 +21,7 @@
     "typescript": "~3.2.2"
   },
   "peerDependencies": {
-    "firebase": "^6.6.1",
+    "firebase": "^7.14.1",
     "rxjs": "~6.5.3"
   },
   "files": [
@@ -46,10 +46,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/baumblatt/capacitor-firebase-auth.git"
+    "url": "https://github.com/taliator/capacitor-firebase-auth.git"
   },
   "bugs": {
-    "url": "https://github.com/baumblatt/capacitor-firebase-auth.git/issues"
-  },
-  "_where": "/Users/baumblatt/wks/cap-fire-playground"
+    "url": "https://github.com/taliator/capacitor-firebase-auth.git/issues"
+  }
 }
