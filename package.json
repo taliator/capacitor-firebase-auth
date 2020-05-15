@@ -13,7 +13,9 @@
   "author": "Bernardo Baumblatt",
   "license": "MIT",
   "dependencies": {
-    "@capacitor/core": "latest"
+    "@capacitor/core": "latest",
+    "firebase": "^7.14.3",
+    "rxjs": "^6.5.5"
   },
   "devDependencies": {
     "rimraf": "^2.6.3",

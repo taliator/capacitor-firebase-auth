@@ -1,5 +1,5 @@
 import { Plugins } from '@capacitor/core';
-import firebase from 'firebase/app';
+import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import { Observable, throwError } from 'rxjs';
 import {
@@ -13,6 +13,16 @@ import {
 
 // @ts-ignore
 const plugin: CapacitorFirebaseAuthPlugin = Plugins.CapacitorFirebaseAuth;
+
+let firebaseInstance: firebase.app.App = null
+
+/**
+ * Set the firebaseInstance
+ * @param appInstance A Firebase App from the web layer
+ */
+export const cfaSetInstance = (appInstance: firebase.app.App) => {
+  firebaseInstance = appInstance
+}
 
 /**
  * Call the sign in method on native layer and sign in on web layer with retrieved credentials.
@@ -52,7 +62,7 @@ export const cfaSignInGoogle = (): Observable<firebase.User> => {
 			const credential = firebase.auth.GoogleAuthProvider.credential(result.idToken);
 
 			// web sign in
-			firebase.app().auth().signInWithCredential(credential)
+			firebase.auth(firebaseInstance).signInWithCredential(credential)
 				.then((userCredential: firebase.auth.UserCredential) => {
 					observer.next(userCredential.user);
 					observer.complete();
@@ -80,7 +90,7 @@ export const cfaSignInTwitter = (): Observable<firebase.User> => {
 			const credential = firebase.auth.TwitterAuthProvider.credential(result.idToken, result.secret);
 
 			// web sign in
-			firebase.app().auth().signInWithCredential(credential)
+			firebase.auth(firebaseInstance).signInWithCredential(credential)
 				.then((userCredential: firebase.auth.UserCredential) => {
 					observer.next(userCredential.user);
 					observer.complete();
@@ -105,7 +115,7 @@ export const cfaSignInFacebook = (): Observable<firebase.User> => {
 			const credential = firebase.auth.FacebookAuthProvider.credential(result.idToken);
 
 			// web sign in
-			firebase.app().auth().signInWithCredential(credential)
+			firebase.auth(firebaseInstance).signInWithCredential(credential)
 				.then((userCredential: firebase.auth.UserCredential) => {
 					observer.next(userCredential.user);
 					observer.complete();
@@ -136,7 +146,7 @@ export const cfaSignInPhone = (phone: string, verificationCode?: string) : Obser
 			const credential = firebase.auth.PhoneAuthProvider.credential(result.verificationId, result.verificationCode);
 
 			// web sign in
-			firebase.app().auth().signInWithCredential(credential)
+			firebase.auth(firebaseInstance).signInWithCredential(credential)
 				.then((userCredential: firebase.auth.UserCredential) => {
 					observer.next(userCredential.user);
 					observer.complete();
@@ -181,7 +191,7 @@ export const cfaSignOut = (): Observable<void> => {
 	return new Observable(observer => {
 		plugin.signOut({}).then(() => {
 			// web sign out
-			firebase.app().auth().signOut()
+			firebase.auth(firebaseInstance).signOut()
 				.then(() => {
 					observer.next();
 					observer.complete();
